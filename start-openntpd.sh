@@ -3,6 +3,8 @@ set -e
 
 echo "=> Configuring Openntpd"
 
+cp -v /etc/ntpd.conf.template /etc/ntpd.conf
+
 BACKENDS=($BACKENDS)
 for BACKEND in "${BACKENDS[@]}"
 do
@@ -11,4 +13,4 @@ done
 
 echo "=> Starting Openntpd ... : "
 
-exec ntpd -d -f /etc/ntp.conf
+exec ntpd -d -f /etc/ntpd.conf

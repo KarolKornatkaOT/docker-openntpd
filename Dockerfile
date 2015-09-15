@@ -3,7 +3,7 @@ FROM alpine:3.2
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 ADD start-openntpd.sh /bin/start-openntpd.sh
-ADD ntp.conf /etc/ntp.conf
+ADD ntpd.conf /etc/ntpd.conf.template
 
 # Prepare image
 RUN mkdir /var/empty \
