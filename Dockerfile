@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM oberthur/docker-alpine-glibc:3.2
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
