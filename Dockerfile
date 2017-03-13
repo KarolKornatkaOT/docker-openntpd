@@ -1,16 +1,16 @@
-FROM oberthur/docker-alpine-glibc:3.2
+FROM oberthur/docker-ubuntu:16.04
 
-MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
+MAINTAINER Karol Kornatka <k.kornatka@oberthur.com>
 
+ENV OPENNTPD_VESRION="1:5.7p4-2"
 ADD start-openntpd.sh /bin/start-openntpd.sh
 ADD ntpd.conf /etc/ntpd.conf.template
 
 # Prepare image
-RUN mkdir /var/empty \
-    && chown root /var/empty \
-    && chmod 700 /var/empty \
+RUN mkdir /var/run/openntpd \
+    && chown root /var/run/openntpd \
+    && chmod 700 /var/run/openntpd \
     && chmod +x /bin/start-openntpd.sh \
-    && apk add openntpd bash --update-cache
+    && apt update && apt install openntpd=$OPENNTPD_VESRION 
 
-ENTRYPOINT ["/bin/start-openntpd.sh"]
-
+ENTRYPOINT ["/bin/start-openntpd.sh"]& chmod +x /bin/start-openntpd.sh \
