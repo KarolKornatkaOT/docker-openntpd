@@ -3,8 +3,8 @@ FROM oberthur/docker-ubuntu:16.04-20170303
 MAINTAINER Karol Kornatka <k.kornatka@oberthur.com>
 
 ENV OPENNTPD_VESRION="1:5.7p4-2"
-ADD start-openntpd.sh /bin/start-openntpd.sh
-ADD ntpd.conf /etc/ntpd.conf.template
+COPY start-openntpd.sh /bin/start-openntpd.sh
+COPY ntpd.conf /etc/ntpd.conf.template
 
 # Prepare image
 RUN mkdir /var/run/openntpd \
