@@ -11,6 +11,9 @@ RUN mkdir /var/run/openntpd \
     && chown root /var/run/openntpd \
     && chmod 700 /var/run/openntpd \
     && chmod +x /bin/start-openntpd.sh \
-    && apt update && apt install openntpd=$OPENNTPD_VESRION 
+    && apt update && apt install openntpd=$OPENNTPD_VESRION \
+    && apt-get clean autoclean \
+    && apt-get autoremove --yes \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/ 
 
 ENTRYPOINT ["/bin/start-openntpd.sh"]& chmod +x /bin/start-openntpd.sh \
